@@ -30,6 +30,7 @@ public class PipeController : MonoBehaviour {
 
     void PipeController_GameOver(object sender, System.EventArgs e)
     {
+        CancelInvoke();
         isPlaying = false;
         foreach (GameObject pipeObject in pipes)
         {
@@ -44,9 +45,9 @@ public class PipeController : MonoBehaviour {
         if (!isPlaying)
             return;
         Debug.Log("before spawn");
-        GameObject go = MonoBehaviour.Instantiate(PipePair, new Vector3(-1, Random.Range(-1f, -4.4f), -1f), new Quaternion()) as GameObject;
-        go.transform.parent = GameObject.Find("Main Camera").transform;
-        go.GetComponent<Pipe>().PipeController = this;
+        GameObject go = MonoBehaviour.Instantiate(PipePair, new Vector3(-0.5f, Random.Range(0f, 1f), -1f), new Quaternion()) as GameObject;
+        //go.transform.parent = GameObject.Find("Main Camera").transform;
+        go.GetComponent<PipePair>().PipeController = this;
         //go.transform.position = new Vector3(6f, Random.Range(-1f, -4.4f), -1f);
         pipes.Add(go);
         Debug.Log("after spawn");

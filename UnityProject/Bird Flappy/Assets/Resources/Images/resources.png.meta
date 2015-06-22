@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 22766ed5dc58fe64e99e06f9e884fc15
-timeCreated: 1433168155
+timeCreated: 1433467598
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -18,7 +18,7 @@ TextureImporter:
     21300022: get_ready
     21300024: game_over
     21300026: over
-    21300028: resources_14
+    21300028: large_0
     21300030: resources_15
     21300032: resources_16
     21300034: logo
@@ -30,14 +30,14 @@ TextureImporter:
     21300046: resources_23
     21300048: share
     21300050: play
-    21300052: resources_26
-    21300054: resources_27
-    21300056: resources_28
-    21300058: resources_29
-    21300060: resources_30
-    21300062: resources_31
-    21300064: resources_32
-    21300066: resources_33
+    21300052: large_2
+    21300054: large_3
+    21300056: large_4
+    21300058: large_5
+    21300060: large_6
+    21300062: large_7
+    21300064: large_8
+    21300066: large_9
     21300068: resources_34
     21300070: resources_35
     21300072: resources_36
@@ -52,7 +52,7 @@ TextureImporter:
     21300090: resources_45
     21300092: resources_46
     21300094: resources_47
-    21300096: resources_48
+    21300096: large_1
     21300098: resources_49
     21300100: resources_50
     21300102: resources_51
@@ -63,6 +63,14 @@ TextureImporter:
     21300112: resources_56
     21300114: pause
     21300116: resources_58
+    21300118: pipe_red_up
+    21300120: pipe_red_down
+    21300122: pipe_green_down
+    21300124: pipe_green_up
+    21300126: large_minus
+    21300128: resources_1
+    21300130: small_plus3
+    21300132: mushroom
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -228,7 +236,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: resources_14
+    - name: large_0
       rect:
         serializedVersion: 2
         x: 496
@@ -318,7 +326,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: resources_26
+    - name: large_2
       rect:
         serializedVersion: 2
         x: 292
@@ -328,7 +336,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: resources_27
+    - name: large_3
       rect:
         serializedVersion: 2
         x: 306
@@ -338,7 +346,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: resources_28
+    - name: large_4
       rect:
         serializedVersion: 2
         x: 320
@@ -348,7 +356,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: resources_29
+    - name: large_5
       rect:
         serializedVersion: 2
         x: 334
@@ -358,7 +366,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: resources_30
+    - name: large_6
       rect:
         serializedVersion: 2
         x: 292
@@ -368,7 +376,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: resources_31
+    - name: large_7
       rect:
         serializedVersion: 2
         x: 306
@@ -378,7 +386,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: resources_32
+    - name: large_8
       rect:
         serializedVersion: 2
         x: 320
@@ -388,7 +396,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: resources_33
+    - name: large_9
       rect:
         serializedVersion: 2
         x: 334
@@ -538,12 +546,12 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: resources_48
+    - name: large_1
       rect:
         serializedVersion: 2
-        x: 206
+        x: 204
         y: 29
-        width: 8
+        width: 12
         height: 18
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -645,6 +653,86 @@ TextureImporter:
         y: 13
         width: 6
         height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: pipe_red_up
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 9
+        width: 27
+        height: 166
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: pipe_red_down
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 9
+        width: 27
+        height: 166
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: pipe_green_down
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 9
+        width: 27
+        height: 166
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: pipe_green_up
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 9
+        width: 27
+        height: 166
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: large_minus
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 108
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: resources_1
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 127
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: small_plus3
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 97
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mushroom
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 50
+        width: 16
+        height: 17
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

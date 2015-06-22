@@ -2,22 +2,25 @@
 using System.Collections;
 using System;
 
-public class BirdController : MonoBehaviour {
+public class BirdController : MonoBehaviour
+{
 
-    public Vector2 jumpForce = new Vector2(0, 300);
-    private Rigidbody2D rb2d;
-    public bool isPlaying;
+    public delegate void ScoredEventHandler(object sender, int pointsScored);
+    public Vector2 JumpForce = new Vector2(0, 300);
+    private Rigidbody2D rb2D;
+    public bool IsPlaying;
     private bool gameOver;
     public event EventHandler GameOver;
-    private int score;
+    public event ScoredEventHandler Scored;
     private Vector3 startPosition;
     private float startRotation;
+    private static float increaseFactor = 1.20f;
 	// Use this for initialization
 	void Start () {
-        rb2d = this.GetComponent<Rigidbody2D>();
-        rb2d.isKinematic = true;
+        rb2D = this.GetComponent<Rigidbody2D>();
+        rb2D.isKinematic = true;
 	    startPosition = this.transform.position;
-	    startRotation = rb2d.rotation;
+	    startRotation = rb2D.rotation;
         GameObject.Find("Controllers").GetComponent<GameController>().GameStarted += BirdController_GameStarted;
 	}
 
@@ -25,28 +28,20 @@ public class BirdController : MonoBehaviour {
     {
         GetComponent<Animator>().enabled = true;
         this.transform.position = startPosition;
-        rb2d.rotation = startRotation;
+        this.transform.localScale = Vector3.one;
+        rb2D.rotation = startRotation;
         gameOver = false;
-        isPlaying = true;
-        rb2d.isKinematic = false;
-        score = 0;
+        IsPlaying = true;
+        rb2D.isKinematic = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetMouseButtonDown(0) && isPlaying){
-            rb2d.velocity = Vector2.zero;
-            rb2d.AddForce(jumpForce);
+		if(Input.GetMouseButtonDown(0) && IsPlaying){
+            rb2D.velocity = Vector2.zero;
+            rb2D.AddForce(JumpForce);
 		}
 	}
-
-    // Update is called once per frame
-    void OnGUI()
-    {
-        //Debug.Log("saknf");
-        GUI.color = Color.black;
-        GUILayout.Label(" Score: " + score.ToString());
-    }
 
     void OnCollisionEnter2D(Collision2D otherCollider)
     {
@@ -56,31 +51,64 @@ public class BirdController : MonoBehaviour {
                 GameOver(this, new EventArgs());
             if (otherCollider.collider.tag.Equals("Pipe"))
                 otherCollider.collider.enabled = false;
-            rb2d.velocity = new Vector2(0, -3);
+            rb2D.velocity = new Vector2(0, -1.5f);
             Debug.Log("game over");
             GetComponent<Animator>().enabled = false;
-            isPlaying = false;
+            IsPlaying = false;
             gameOver = true;
             //otherCollider.GetComponentInParent<SpriteRenderer>().color = otherCollider.GetComponentInParent<AreaScript>().color;
         }
         else
         {
-            rb2d.isKinematic = true;
+            rb2D.isKinematic = true;
         }
     }
 
     void OnTriggerEnter2D(Collider2D otherCollider)
     {
-        Debug.Log(otherCollider);
-        score--;
+        Debug.Log(otherCollider.name);
+        if (!gameOver)
+        {
+            if (otherCollider.name == "Mushroom")
+            {
+                this.transform.localScale /= increaseFactor;
+                otherCollider.GetComponentInParent<PipePair>().HideMushroom();
+                //return;
+            }
+            else
+            {
+                Pipe pipe = otherCollider.GetComponentInParent<Pipe>();
+                if (pipe.PrimaryType == Pipe.PrimaryPipeType.Increaser)
+                {
+                    this.transform.localScale *= increaseFactor;
+                    //Score(-3);
+                    //return;
+                }
+                if (pipe.SecondaryType == Pipe.SecondaryPipeType.Plus3)
+                {
+                    Score(-3);
+                    //return;
+                }
+                else
+                {
+                    Score(1);
+                }
+            }
+        }
+    }
+
+    void Score(int points)
+    {
+        if (Scored != null)
+            Scored(this, points);
     }
 
     void FixedUpdate()
     {
-        if (gameOver && rb2d.rotation <= 90)
+        if (gameOver && rb2D.rotation <= 90)
         {
-            Debug.Log(rb2d.rotation);
-            rb2d.MoveRotation(rb2d.rotation + 200f * Time.fixedDeltaTime);
+            //Debug.Log(rb2D.rotation);
+            rb2D.MoveRotation(rb2D.rotation + 200f * Time.fixedDeltaTime);
         }
     }
 }
